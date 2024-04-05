@@ -3,7 +3,8 @@
 
 <div align = "center">
 
-#Modelo Logico
+# Modelo Logico
+
 <img src = "ModeloLogico.jpg">
 
 </div>
