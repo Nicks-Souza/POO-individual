@@ -2,7 +2,7 @@ package br.com.poo.individual.entities;
 
 public class Departamento {
 
-	private int id;
+	private Integer id;
 	private String nome;
 	private String regiao;
 	private String sigla;
@@ -16,7 +16,7 @@ public class Departamento {
 	}
 	
 
-	public Departamento(int id, String nome, String regiao, String sigla, String funcao, String turnoServico) {
+	public Departamento(Integer id, String nome, String regiao, String sigla, String funcao, String turnoServico) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -27,7 +27,7 @@ public class Departamento {
 	}
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

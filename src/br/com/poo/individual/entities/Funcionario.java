@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Funcionario {
 
-	private int id;
+	private Integer id;
 	private String nome;
 	private String funcao;
 	private String genero;
@@ -14,15 +14,15 @@ public class Funcionario {
 	private String senha;
 	private Float salario;
 	private String permissao;
-	private int fkDep;
+	private Integer fkDep;
 	
 	//metodo especial chamado construtor default
 	public Funcionario() {
 		super();//herança
 	}
 
-	public Funcionario(int id, String nome, String funcao, String genero, LocalDate dataNasc, String cpf,
-			String telefone, String email, String senha, Float salario, String permissao, int fkDep) {
+	public Funcionario(Integer id, String nome, String funcao, String genero, LocalDate dataNasc, String cpf,
+			String telefone, String email, String senha, Float salario, String permissao, Integer fkDep) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,7 +38,7 @@ public class Funcionario {
 		this.fkDep = fkDep;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -102,7 +102,7 @@ public class Funcionario {
 		return salario;
 	}
 
-	public int getFkDep() {
+	public Integer getFkDep() {
 		return fkDep;
 	}
 	
