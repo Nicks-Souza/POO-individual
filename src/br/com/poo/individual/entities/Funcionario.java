@@ -1,5 +1,7 @@
 package br.com.poo.individual.entities;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Funcionario {
 
@@ -15,6 +17,8 @@ public class Funcionario {
 	private Float salario;
 	private String permissao;
 	private Integer fkDep;
+	
+	static Map<Integer, Funcionario> mapaFuncionarios = new HashMap<>();
 	
 	//metodo especial chamado construtor default
 	public Funcionario() {
@@ -37,7 +41,7 @@ public class Funcionario {
 		this.permissao = permissao;
 		this.fkDep = fkDep;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -104,6 +108,17 @@ public class Funcionario {
 
 	public Integer getFkDep() {
 		return fkDep;
+	}
+	
+	public static Map<Integer, Funcionario> getMapaFuncionarios() {
+		return mapaFuncionarios;
+	}
+
+	@Override
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", funcao=" + funcao + ", genero=" + genero + ", dataNasc="
+				+ dataNasc + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", senha=" + senha
+				+ ", salario=" + salario + ", permissao=" + permissao + ", fkDep=" + fkDep + "]";
 	}
 	
 }

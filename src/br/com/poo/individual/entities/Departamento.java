@@ -1,5 +1,8 @@
 package br.com.poo.individual.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Departamento {
 
 	private Integer id;
@@ -9,6 +12,8 @@ public class Departamento {
 	private String funcao;
 	private String turnoServico;
 	
+	
+	static Map<Integer, Departamento> mapaDepartamento = new HashMap<>();
 	
 	public Departamento() {
 		super();
@@ -74,6 +79,18 @@ public class Departamento {
 
 	public String getSigla() {
 		return sigla;
+	}
+
+
+	public static Map<Integer, Departamento> getMapaDepartamento() {
+		return mapaDepartamento;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Departamento [id=" + id + ", nome=" + nome + ", regiao=" + regiao + ", sigla=" + sigla + ", funcao="
+				+ funcao + ", turnoServico=" + turnoServico + "]";
 	}
 	
 }
