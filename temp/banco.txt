@@ -1,0 +1,8 @@
+Funcionario;1;Gabriel;fullstack;Masculino;2004-12-09;324.576.896-55;(88)37515034;gabriel@exemplo.com;123456;10000;basica;1;
+Funcionario;2;Nicolas;frontend;Masculino;2006-06-16;227.857.980-99;(21)32714475;nicolas@exemplo.com;1234567;5000;basica;1;
+Funcionario;3;Eduardo;backend;Masculino;2005-05-25;222.456.878-77;(27)31753762;eduardo@exemplo.com;1234;6000;basica;1;
+Funcionario;4;Bryan;frontend;Masculino;2005-04-25;225.565.234-99;(51)24415150;bryan@exemplo.com;12345678;4000;basica;1;
+Funcionario;5;Patrick;fullstack;Masculino;2004-12-14;158.127.124-50;(81)23884914;patrick@exemplo.com;141414;3000;basica;1;
+Funcionario;6;Geovana;backend;feminino;2003-11-03;614.874.590-92;(61)31367602;geovana@exemplo.com;131313;3000;basica;1;
+Funcionario;7;Pedro;gerente;Masculino;2002-12-11;371.138.640-74;(51)38859189;pedroGerente@exemplo.com;15151515;20000;gerencia;1;
+Departamento;1;tecnológico;regiaoserrana;tech;programar;manhã;
