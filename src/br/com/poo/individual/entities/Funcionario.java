@@ -85,6 +85,7 @@ public class Funcionario {
 	public String getNome() {
 		return nome;
 	}
+	
 
 	public String getGenero() {
 		return genero;
