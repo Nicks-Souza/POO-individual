@@ -6,8 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +23,7 @@ public class RelatorioIO extends Funcionario {
 	static final String EXTENSAO = ".txt";
 	private static Logger logger = Util.setupLogger();
 	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+	static DateTimeFormatter dtfBr = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	public static void leitor(String path) throws IOException {
 		BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASICO + path + EXTENSAO));
 		String linha = "";
@@ -62,34 +63,55 @@ public class RelatorioIO extends Funcionario {
 						dados[2], dados[3], dados[4], dados[5], dados[6]);
 				
 				Departamento.getMapaDepartamento().put(Integer.parseInt(dados[1]), departamento);
-				
 				logger.log(Level.INFO, departamento::toString);
+				}
 			} else {
 				break;
-			}
-		}
-			
-		}
+				}
+			}		
 		buffRead.close();
 	}
 
-	public static void escritor(String path) throws IOException {
-		Scanner sc = new Scanner(System.in);
-		Util.customizer();
-		logger.log(Level.INFO, () -> "Escreva o nome do arquivo: ");
-		String nome = sc.next();
+	public static void relatorioListaFuncionários(List<String> nomesFuncionarios) throws IOException {
+		String nome = "Lista-nomes-funcionarios";;
 
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
-		String linha = "";
 
-		Util.customizer();
-		logger.log(Level.INFO, () -> "Escreva algo: ");
-		Scanner sc1 = new Scanner(System.in);
-		linha = sc1.nextLine();
-		buffWrite.append(linha + "\n");
+		buffWrite.append("-----RELATORIO: LISTA FUNCIONÁRIOS-----\n");
+		if(!nomesFuncionarios.isEmpty()) {
+		buffWrite.append("Nome dos Funcionarios: \n");
+		for(String nomeFuncionario : nomesFuncionarios) {
+			buffWrite.append(nomeFuncionario + "\n");
+		}
+		}
+		buffWrite.append("");
+		LocalDateTime ldt = LocalDateTime.now();
+		buffWrite.append("\nData da análise: " + dtfBr.format(ldt));
+		buffWrite.append("\n\n-----FIM DA LISTA FUNCIONARIOS-----\n");
 		buffWrite.close();
-		sc.close();
-		sc1.close();
+
 
 	}
 }
+	
+	
+//	public static void escritor(String path) throws IOException {
+//		Scanner sc = new Scanner(System.in);
+//		Util.customizer();
+//		logger.log(Level.INFO, () -> "Escreva o nome do arquivo: ");
+//		String nome = sc.next();
+//
+//		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+//		String linha = "";
+//
+//		Util.customizer();
+//		logger.log(Level.INFO, () -> "Escreva algo: ");
+//		Scanner sc1 = new Scanner(System.in);
+//		linha = sc1.nextLine();
+//		buffWrite.append(linha + "\n");
+//		buffWrite.close();
+//		sc.close();
+//		sc1.close();
+//
+//	}
+//}
