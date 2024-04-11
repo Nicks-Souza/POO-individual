@@ -3,15 +3,17 @@ package br.com.poo.individual.app;
 import java.io.IOException;
 import java.util.Scanner;
 import br.com.poo.individual.io.RelatorioIO;
+import br.com.poo.individual.services.FuncionarioService;
 import br.com.poo.individual.util.Util;
 
 import java.util.logging.Logger;
 
-//public class Menu {
-//	
+public class Menu {
+	public static Scanner sc = new Scanner(System.in);
+	
 //	public static void main (String[] args) throws IOException {
-//		
-//		
+		
+		
 //		Scanner teclado = new Scanner(System.in);
 //		
 //		int escolha = 0;
@@ -26,8 +28,6 @@ import java.util.logging.Logger;
 //	}
 //}
 
-
-public class Menu {
 
 	
 	private static Logger logger = Util.setupLogger();
@@ -90,7 +90,7 @@ public class Menu {
 		} while (opcao != 3);
 	}
 
-	public static void exibirRelatoriosImpressos() {
+	public static void exibirRelatoriosImpressos() throws IOException {
 		int opcao;
 		do {
 			limparTela();
@@ -104,6 +104,12 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				logger.info("Imprimindo Relatório 1...");
+				FuncionarioService funcionarioservice = new FuncionarioService();
+
+				RelatorioIO.leitor("banco");
+				RelatorioIO.relatorioListaFuncionários(funcionarioservice.listaNomesFuncionarios());
+					sc.close();
+					
 				// Aqui você pode chamar o método para gerar o relatório 1
 				break;
 			case 2:
@@ -132,7 +138,7 @@ public class Menu {
 	}
 
 	public static void limparTela() {
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			System.out.println();
 		}
 	}
