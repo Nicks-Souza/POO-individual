@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.logging.Level;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import br.com.poo.individual.entities.Departamento;
@@ -24,65 +24,51 @@ public class RelatorioIO extends Funcionario {
 	private static Logger logger = Util.setupLogger();
 	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	static DateTimeFormatter dtfBr = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
 	public static void leitor(String path) throws IOException {
 		BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASICO + path + EXTENSAO));
 		String linha = "";
 		while (true) {
 			linha = buffRead.readLine();
-			if(linha != null) {
+			if (linha != null) {
 				Util.customizer();
-			String[] dados = linha.split(";");
+				String[] dados = linha.split(";");
 
-			if (dados[0].equalsIgnoreCase(TipoRegistro.FUNCIONARIO.name())) {
+				if (dados[0].equalsIgnoreCase(TipoRegistro.FUNCIONARIO.name())) {
 
-				/*
-				 * private Integer id; 
-				 * private String nome; 
-				 * private String funcao; 
-				 * private String genero; 
-				 * private static DateTimeFormatter DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
-				 * private String cpf;
-				 * private String telefone; 
-				 * private String email; 
-				 * private String senha; 
-				 * private Float salario;
-				 * private String permissao; 
-				 * private Integer fkDep;
-				 */
+					Funcionario funcionario = new Funcionario(Integer.parseInt(dados[1]), dados[2], dados[3], dados[4],
+							LocalDate.parse(dados[5], dtf), dados[6], dados[7], dados[8], dados[9],
+							Float.parseFloat(dados[10]), dados[11], Integer.parseInt(dados[12]));
 
-				Funcionario funcionario = new Funcionario(Integer.parseInt(dados[1]), dados[2], dados[3], dados[4],
-						LocalDate.parse(dados[5], dtf), dados[6], dados[7], dados[8], dados[9],
-						Float.parseFloat(dados[10]), dados[11], Integer.parseInt(dados[12]));
-					
-				Funcionario.getMapaFuncionarios().put(Integer.parseInt(dados[1]), funcionario);
-				
-				logger.log(Level.INFO, funcionario::toString);
-			} else if (dados[0].equalsIgnoreCase(TipoRegistro.DEPARTAMENTO.name())) {
-				
-				Departamento departamento = new Departamento(Integer.parseInt(dados[1]),
-						dados[2], dados[3], dados[4], dados[5], dados[6]);
-				
-				Departamento.getMapaDepartamento().put(Integer.parseInt(dados[1]), departamento);
-				logger.log(Level.INFO, departamento::toString);
+					Funcionario.getMapaFuncionarios().put(Integer.parseInt(dados[1]), funcionario);
+
+//					logger.log(Level.INFO, funcionario::toString);
+				} else if (dados[0].equalsIgnoreCase(TipoRegistro.DEPARTAMENTO.name())) {
+
+					Departamento departamento = new Departamento(Integer.parseInt(dados[1]), dados[2], dados[3],
+							dados[4], dados[5], dados[6]);
+
+					Departamento.getMapaDepartamento().put(Integer.parseInt(dados[1]), departamento);
+//					logger.log(Level.INFO, departamento::toString);
 				}
 			} else {
 				break;
-				}
-			}		
+			}
+		}
 		buffRead.close();
 	}
 
-	public static void relatorioListaFuncionários(List<String> nomesFuncionarios) throws IOException {
-		String nome = "Lista-nomes-funcionarios";;
+	public static void relatorioListaFuncionarios(List<Funcionario> Funcionarios) throws IOException {
+		String nome = "Lista-nomes-funcionarios";
 
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 
 		buffWrite.append("-----RELATORIO: LISTA FUNCIONÁRIOS-----\n");
-		if(!nomesFuncionarios.isEmpty()) {
-		buffWrite.append("Nome dos Funcionarios: \n");
-		for(String nomeFuncionario : nomesFuncionarios) {
-			buffWrite.append(nomeFuncionario + "\n");
-		}
+		if (!Funcionarios.isEmpty()) {
+			buffWrite.append("Nome dos Funcionarios: \n");
+			for (Funcionario Funcionario : Funcionarios) {
+				buffWrite.append("\tnome: " + Funcionario.getNome() + "\tFunção: " + Funcionario.getFuncao() + "\n");
+			}
 		}
 		buffWrite.append("");
 		LocalDateTime ldt = LocalDateTime.now();
@@ -90,11 +76,56 @@ public class RelatorioIO extends Funcionario {
 		buffWrite.append("\n\n-----FIM DA LISTA FUNCIONARIOS-----\n");
 		buffWrite.close();
 
+	}
+
+	public static void relatorioListaDepartamento(List<String> nomesDepartamento) throws IOException {
+		String nome = "Lista-nomes-Departamento";
+		;
+
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+
+		buffWrite.append("-----RELATORIO: LISTA DEPARTAMENTO-----\n");
+		if (!nomesDepartamento.isEmpty()) {
+			buffWrite.append("Nome do departamento: \n");
+			for (String nomeDepartamento : nomesDepartamento) {
+				buffWrite.append(nomeDepartamento + "\n");
+			}
+		}
+		buffWrite.append("");
+		LocalDateTime ldt = LocalDateTime.now();
+		buffWrite.append("\nData da análise: " + dtfBr.format(ldt));
+		buffWrite.append("\n\n-----FIM DA LISTA DEPARTAMENTO-----\n");
+		buffWrite.close();
+
+	}
+
+	public static void relatorioListaFuncionarioDepartamento(List<Funcionario> Funcionario,
+			List<Departamento> Departamento) throws IOException {
+		String nome = "Lista-nomes-FuncionarioDepartamento";
+
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+
+		buffWrite.append("-----RELATORIO: LISTA Funcionario-DEPARTAMENTO-----\n");
+		if (!Departamento.isEmpty() && !Funcionario.isEmpty()) {
+			buffWrite.append("Nome do departamento: \n");
+			for (Departamento departamento : Departamento) {
+				for (Funcionario funcionario : Funcionario) {
+					if (Objects.equals(funcionario.getFkDep(), departamento.getId())) {
+						buffWrite.append("Nome do funcionario: " + funcionario.getNome() + "\t\tNome do departamento: "
+								+ departamento.getNome() + "\n");
+					}
+				}
+			}
+		}
+		buffWrite.append("");
+		LocalDateTime ldt = LocalDateTime.now();
+		buffWrite.append("\nData da análise: " + dtfBr.format(ldt));
+		buffWrite.append("\n\n-----FIM DA LISTA Pessoa-DEPARTAMENTO-----\n");
+		buffWrite.close();
 
 	}
 }
-	
-	
+
 //	public static void escritor(String path) throws IOException {
 //		Scanner sc = new Scanner(System.in);
 //		Util.customizer();
