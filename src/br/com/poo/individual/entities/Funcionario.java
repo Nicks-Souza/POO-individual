@@ -1,5 +1,6 @@
 package br.com.poo.individual.entities;
 import java.time.LocalDate;
+//import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +42,13 @@ public class Funcionario {
 		this.permissao = permissao;
 		this.fkDep = fkDep;
 	}
+
 	
+	public Funcionario(Integer id2, String nome2, String funcao2, String genero2, Integer dataNasc2, String cpf2,
+			String telefone2, String email2, String senha2, Float salario2, String permissao2, Integer idDepartamento) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -111,6 +118,14 @@ public class Funcionario {
 		return fkDep;
 	}
 	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public static Map<Integer, Funcionario> getMapaFuncionarios() {
 		return mapaFuncionarios;
 	}

@@ -3,8 +3,9 @@ package br.com.poo.individual.app;
 import java.io.IOException;
 import java.util.Scanner;
 
+import br.com.poo.individual.controllers.AutenticacaoController;
 import br.com.poo.individual.io.RelatorioIO;
-import br.com.poo.individual.services.MenuService;
+//import br.com.poo.individual.services.MenuService;
 
 public class IndividualApplication {
 	public static Scanner sc = new Scanner(System.in);
@@ -28,9 +29,16 @@ public class IndividualApplication {
 
 
 	public static void main(String[] args) throws IOException {
+			AutenticacaoController autenticacaoController = new AutenticacaoController();
 			
-			RelatorioIO.leitor("banco");
-			MenuService.menu();
+			try {
+				RelatorioIO.leitor("banco");
+				autenticacaoController.login();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 	}
 }
 

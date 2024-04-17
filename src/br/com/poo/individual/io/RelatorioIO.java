@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 import br.com.poo.individual.entities.Departamento;
 import br.com.poo.individual.entities.Funcionario;
@@ -21,7 +22,8 @@ public class RelatorioIO extends Funcionario {
 
 	static final String PATH_BASICO = "./temp/";
 	static final String EXTENSAO = ".txt";
-	private static Logger logger = Util.setupLogger();
+//	private static Logger logger = Util.setupLogger();
+	
 	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	static DateTimeFormatter dtfBr = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -125,6 +127,22 @@ public class RelatorioIO extends Funcionario {
 
 	}
 }
+
+
+//public static void cadastrarFuncionario(Funcionario funcionario) {
+//	String nome = "banco";
+//
+//	try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true))) {
+//		// Pet;2;Pastel;felino;gato preto;5;preto;pequeno;3.5;5;2020-02-17 00:00:00;
+//		String linha = "Funcionario;" + funcionario.getId() + ";" + funcionario.getNome() + ";" + funcionario.getFuncao() + ";" + funcionario.getGenero()
+//				+ ";" + funcionario.getDataNasc() + ";" + funcionario.getCpf() + ";" + funcionario.getTelefone() + ";" + funcionario.getEmail() + ";"
+//				+ funcionario.getSenha() + ";" + funcionario.getSalario() + ";" + funcionario.getPermissao() + ";" + funcionario.getFkDep() + ";";
+//		buffWrite.append("\n").append(linha);
+//		buffWrite.flush();
+//	} catch (IOException e) {
+//		logger.log(Level.INFO, "Erro ao salvar no arquivo!");
+		
+	
 
 //	public static void escritor(String path) throws IOException {
 //		Scanner sc = new Scanner(System.in);
