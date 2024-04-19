@@ -1,0 +1,13 @@
+-----RELATORIO: LISTA Funcionario-DEPARTAMENTO-----
+Nome do departamento: 
+Nome do funcionario: Gabriel		Nome do departamento: tecnol贸gico
+Nome do funcionario: Nicolas		Nome do departamento: tecnol贸gico
+Nome do funcionario: Eduardo		Nome do departamento: tecnol贸gico
+Nome do funcionario: Bryan		Nome do departamento: tecnol贸gico
+Nome do funcionario: Patrick		Nome do departamento: tecnol贸gico
+Nome do funcionario: Geovana		Nome do departamento: tecnol贸gico
+Nome do funcionario: Pedro		Nome do departamento: tecnol贸gico
+
+Data da an醠ise: 2024-04-18 19:28:29
+
+-----FIM DA LISTA Pessoa-DEPARTAMENTO-----

@@ -1,0 +1,26 @@
+-----RELATORIO: LISTA FUNCIONÁRIOS-----
+Nome dos Funcionarios: 
+	nome: Gabriel	Função: fullstack
+	nome: Nicolas	Função: frontend
+	nome: Eduardo	Função: backend
+	nome: Bryan	Função: frontend
+	nome: Patrick	Função: fullstack
+	nome: Geovana	Função: backend
+	nome: Pedro	Função: gerente
+
+Data da análise: 2024-04-18 19:27:53
+
+-----FIM DA LISTA FUNCIONARIOS-----
+-----RELATORIO: LISTA FUNCIONÁRIOS-----
+Nome dos Funcionarios: 
+	nome: Gabriel	Função: fullstack
+	nome: Nicolas	Função: frontend
+	nome: Eduardo	Função: backend
+	nome: Bryan	Função: frontend
+	nome: Patrick	Função: fullstack
+	nome: Geovana	Função: backend
+	nome: Pedro	Função: gerente
+
+Data da análise: 2024-04-18 19:27:59
+
+-----FIM DA LISTA FUNCIONARIOS-----
